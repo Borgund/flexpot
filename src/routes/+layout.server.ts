@@ -3,5 +3,7 @@ import { serializeNonPOJOs } from '$lib/utils';
 
 export const load = (async ({ locals }) => {
 	const user = locals.pb.authStore.record;
-	return { user: serializeNonPOJOs(user) };
+	const userAvatar = locals.pb.files.getURL({ ...user }, user?.avatar);
+
+	return { user: serializeNonPOJOs(user), userAvatar };
 }) satisfies LayoutServerLoad;

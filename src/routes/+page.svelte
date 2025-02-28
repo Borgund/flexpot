@@ -1,2 +1,20 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	import { faStamp } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
+</script>
+
+<main>
+	<div class="container">
+		<h1>Welcome to FlexPot <Fa icon={faStamp} size="lg" /></h1>
+		<p>
+			Please <a href="/login">login</a> to continue.
+		</p>
+	</div>
+</main>
+
+<style>
+	main {
+		text-align: center;
+		padding: 1rem;
+	}
+</style>

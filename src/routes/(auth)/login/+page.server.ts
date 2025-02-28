@@ -3,7 +3,7 @@ import { REDIRECT_URL } from '$env/static/private';
 import type { PageServerLoad, Actions } from './$types';
 import { ClientResponseError } from 'pocketbase';
 
-export const load = (async ({ locals, url }) => {
+export const load: PageServerLoad = async ({ locals, url }) => {
 	if (locals.pb.authStore.record) {
 		return redirect(303, '/dashboard');
 	}
@@ -11,8 +11,8 @@ export const load = (async ({ locals, url }) => {
 	const authMethods = await locals.pb_providers; //await locals.pb.collection('users').listAuthMethods();
 	const fail = url.searchParams.get('fail') === 'true';
 
-	return { providers: authMethods, fail, time: Date.now()};
-}) satisfies PageServerLoad;
+	return { providers: authMethods, fail, time: Date.now() };
+};
 
 export const actions: Actions = {
 	register: async ({ locals, request }) => {
